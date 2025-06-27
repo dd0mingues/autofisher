@@ -22,7 +22,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"modid" {
+		"AutoFisherMod" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
@@ -38,7 +38,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
+	modImplementation "net.fabricmc.fabric-api:fabric-lifecycle-events-v1:${project.fabric_version}"
 }
 
 processResources {
@@ -62,6 +62,20 @@ java {
 	sourceCompatibility = JavaVersion.VERSION_21
 	targetCompatibility = JavaVersion.VERSION_21
 }
+
+sourceSets {
+	main {
+		resources {
+			exclude '**/desktop.ini'
+		}
+	}
+	client {
+		resources {
+			exclude '**/desktop.ini'
+		}
+	}
+}
+
 
 jar {
 	inputs.property "archivesName", project.base.archivesName
@@ -87,4 +101,10 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+
+// Prevent duplicates & exclude all desktop.ini files from the JAR
+tasks.named("jar") {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	exclude("**/desktop.ini")
 }
