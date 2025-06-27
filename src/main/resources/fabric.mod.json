@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "autofisher",
+	"version": "${version}",
+	"name": "Auto Fisher Mod",
+	"description": "A proof-of-concept mod to automatically reel in fish when a bite is detected.",
+	"authors": [
+		"YourNameHere"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/autofisher/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.autofisher.AutoFisherMod"
+		]
+	},
+	"depends": {
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
